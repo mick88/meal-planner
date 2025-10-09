@@ -1,0 +1,6 @@
+{
+  "proteins": ["Mince meat", "Beef", "Eggs", "Red lentils", "Chickpeas", "Kidney beans"],
+  "carbs": ["Pasta", "Potatoes", "Sweet potatoes", "Bread", "Barley groats", "Bulgur wheat"],
+  "veggiesAndFruits": ["Spinach", "Tomatoes", "Carrots", "Zucchini", "Peppers", "Peas", "Apple", "Banana"],
+  "dairyAndFats": ["Cheese", "Natural Yoghurt", "Milk", "Avocado", "Butter"]
+}

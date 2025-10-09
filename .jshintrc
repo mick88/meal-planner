@@ -1,0 +1,11 @@
+{
+  "esversion": 6,
+  "browser": true,
+  "devel": true,
+  "unused": true,
+  "undef": true,
+  "globals": {
+    "AudioContext": true,
+    "webkitAudioContext": true
+  }
+}
