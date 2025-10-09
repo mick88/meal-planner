@@ -119,3 +119,62 @@ button:hover {
   border-top: 1px solid #e0e0e0;
   color: #777;
 }
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; 
+  z-index: 100; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 2vh auto; /* Small vertical margin */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 700px;
+  border-radius: 10px;
+  position: relative;
+  height: 90vh; /* Make modal content almost full height */
+  display: flex;
+  flex-direction: column;
+}
+
+.close-btn {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#modal-ingredient-list {
+  flex-grow: 1; /* Allow the list to grow and fill space */
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin-top: 1rem;
+}
+
+#modal-ingredient-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+#modal-ingredient-list li {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
