@@ -2,6 +2,10 @@
 
 A simple web application that helps generate meal ideas for toddlers by randomly selecting ingredients. It ensures nutritional variety by considering different food groups.
 
+## Live Demo
+
+You can try the application live at: [https://mick88.github.io/meal-planner/](https://mick88.github.io/meal-planner/)
+
 ## Features
 
 - **Generate Meal Ideas:** Get a set of three random ingredients to spark a meal idea.
