@@ -112,3 +112,10 @@ button:hover {
   opacity: 1;
   transform: scale(1.1); /* Make the pinned icon pop */
 }
+
+.missing-groups {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  color: #777;
+}

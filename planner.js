@@ -5,12 +5,15 @@ const ingredientListDiv = document.getElementById('ingredient-list');
 
 let allIngredients = [];
 let selectedIngredients = []; // Now stores objects like {name, groups, pinned, isNew}
+let allAvailableGroups = new Set();
 
 // Fetch ingredient data once when the script loads
 fetch('ingredients.json')
     .then(response => response.json())
     .then(data => {
         allIngredients = data;
+        // Discover all unique groups available in the dataset
+        data.forEach(ing => ing.groups.forEach(group => allAvailableGroups.add(group)));
     });
 
 // Re-renders the entire ingredient list based on the current state
@@ -21,12 +24,11 @@ const renderIngredients = () => {
         return;
     }
 
-    // Create a list to hold the ingredient elements
+    // Main ingredient list HTML
     const listHtml = selectedIngredients.map(ing => {
         const pinnedClass = ing.pinned ? 'pinned' : '';
         const newClass = ing.isNew ? 'new-ingredient' : '';
-        // Clear the isNew flag after rendering
-        ing.isNew = false;
+        ing.isNew = false; // Clear the isNew flag after rendering
         return `
             <li class="${newClass}">
                 <div class="ingredient-info">
@@ -41,7 +43,21 @@ const renderIngredients = () => {
         `;
     }).join('');
 
-    ingredientListDiv.innerHTML = `<h3>Selected Ingredients:</h3><ul>${listHtml}</ul>`;
+    // Calculate and render missing groups
+    const coveredGroups = new Set(selectedIngredients.flatMap(ing => ing.groups));
+    const missingGroups = [...allAvailableGroups].filter(group => !coveredGroups.has(group));
+    
+    let missingGroupsHtml = '';
+    if (missingGroups.length > 0) {
+        missingGroupsHtml = `
+            <div class="missing-groups">
+                <h4>Missing Groups:</h4>
+                <small>${missingGroups.join(', ')}</small>
+            </div>
+        `;
+    }
+
+    ingredientListDiv.innerHTML = `<h3>Selected Ingredients:</h3><ul>${listHtml}</ul>${missingGroupsHtml}`;
     addBtn.innerHTML = 'Add another ➕';
     addBtn.style.display = 'inline-block';
 };
@@ -80,9 +96,45 @@ generateBtn.addEventListener('click', () => {
     renderIngredients();
 });
 
-// Event listener for the add button
+// Event listener for the add button (smart selection)
 addBtn.addEventListener('click', () => {
-    addRandomIngredients(1);
+    const coveredGroups = new Set(selectedIngredients.flatMap(ing => ing.groups));
+    const missingGroups = [...allAvailableGroups].filter(group => !coveredGroups.has(group));
+    const selectedNames = new Set(selectedIngredients.map(ing => ing.name));
+
+    let ingredientAdded = false;
+
+    if (missingGroups.length > 0) {
+        // Shuffle missing groups to pick a random one to target
+        for (let i = missingGroups.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [missingGroups[i], missingGroups[j]] = [missingGroups[j], missingGroups[i]];
+        }
+
+        // Try to find an ingredient for a missing group
+        for (const group of missingGroups) {
+            const potentialIngredients = allIngredients.filter(ing => 
+                ing.groups.includes(group) && !selectedNames.has(ing.name)
+            );
+
+            if (potentialIngredients.length > 0) {
+                const ingredientToAdd = potentialIngredients[Math.floor(Math.random() * potentialIngredients.length)];
+                selectedIngredients.push({
+                    ...ingredientToAdd,
+                    pinned: false,
+                    isNew: true
+                });
+                ingredientAdded = true;
+                break; // Exit after adding one ingredient
+            }
+        }
+    }
+
+    // Fallback: If no ingredient was added (e.g., all groups covered or no available ingredients for missing groups)
+    if (!ingredientAdded) {
+        addRandomIngredients(1);
+    }
+
     renderIngredients();
 });
 
