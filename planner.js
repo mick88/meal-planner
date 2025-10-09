@@ -33,7 +33,10 @@ const renderIngredients = () => {
                     <strong>${ing.name}</strong>
                     <small>${ing.groups.join(', ')}</small>
                 </div>
-                <button class="pin-btn ${pinnedClass}" data-name="${ing.name}">📌</button>
+                <div class="button-container">
+                    <button class="pin-btn ${pinnedClass}" data-name="${ing.name}">📌</button>
+                    <button class="remove-btn" data-name="${ing.name}">🗑️</button>
+                </div>
             </li>
         `;
     }).join('');
@@ -83,14 +86,28 @@ addBtn.addEventListener('click', () => {
     renderIngredients();
 });
 
-// Event listener for pin clicks (using event delegation)
+// Event listener for button clicks within the list (delegation)
 ingredientListDiv.addEventListener('click', (e) => {
-    if (e.target.classList.contains('pin-btn')) {
-        const ingredientName = e.target.dataset.name;
-        const ingredient = selectedIngredients.find(ing => ing.name === ingredientName);
-        if (ingredient) {
-            ingredient.pinned = !ingredient.pinned; // Toggle pinned state
-            renderIngredients(); // Re-render to update the button's class
+    const target = e.target.closest('button');
+    if (!target) return;
+
+    const ingredientName = target.dataset.name;
+    const ingredientIndex = selectedIngredients.findIndex(ing => ing.name === ingredientName);
+    if (ingredientIndex === -1) return;
+
+    if (target.classList.contains('pin-btn')) {
+        const ingredient = selectedIngredients[ingredientIndex];
+        ingredient.pinned = !ingredient.pinned; // Toggle pinned state
+        renderIngredients(); // Re-render to update the button's class
+    } else if (target.classList.contains('remove-btn')) {
+        // Remove the ingredient
+        selectedIngredients.splice(ingredientIndex, 1);
+
+        // Check if we need to replenish
+        if (selectedIngredients.length < 3) {
+            addRandomIngredients(3 - selectedIngredients.length);
         }
+        
+        renderIngredients();
     }
 });

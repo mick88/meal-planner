@@ -83,17 +83,29 @@ button:hover {
   color: #555;
 }
 
-.pin-btn {
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.pin-btn, .remove-btn {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.5rem; /* Made the pin slightly larger */
-  opacity: 0.3;
+  font-size: 1.5rem;
   transition: all 0.2s;
 }
 
-.pin-btn:hover {
+.pin-btn {
+  opacity: 0.3;
+}
+
+.pin-btn:hover, .remove-btn:hover {
   opacity: 1;
+}
+
+.remove-btn:hover {
+  color: #e74c3c; /* Red for remove */
 }
 
 .pin-btn.pinned {
