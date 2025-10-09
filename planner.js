@@ -1,6 +1,7 @@
 const generateBtn = document.getElementById('generateBtn');
 const addBtn = document.getElementById('addBtn');
 const resultDiv = document.getElementById('result');
+const ingredientListDiv = document.getElementById('ingredient-list');
 
 let allIngredients = [];
 let selectedIngredients = [];
@@ -10,24 +11,23 @@ fetch('ingredients.json')
     .then(response => response.json())
     .then(data => {
         allIngredients = data;
-        // Initially hide the add button
-        addBtn.style.display = 'none';
     });
 
 // Function to render the list of selected ingredients
 const renderIngredients = () => {
     if (selectedIngredients.length === 0) {
-        resultDiv.innerHTML = '<p>Click the button to get a meal idea!</p>';
+        ingredientListDiv.innerHTML = '<p>Click the button to get a meal idea!</p>';
         addBtn.style.display = 'none';
         return;
     }
 
-    resultDiv.innerHTML = `
+    ingredientListDiv.innerHTML = `
         <h3>Selected Ingredients:</h3>
         <ul>
             ${selectedIngredients.map(ing => `<li><strong>${ing.name}</strong> (${ing.groups.join(', ')})</li>`).join('')}
         </ul>
     `;
+    addBtn.innerHTML = 'Add another ➕';
     addBtn.style.display = 'inline-block'; // Show the add button
 };
 
