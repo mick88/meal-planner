@@ -8,7 +8,7 @@ generateBtn.addEventListener('click', () => {
     fetch('ingredients.json')
         .then(response => response.json())
         .then(data => {
-            const { proteins, carbs, veggiesAndFruits, dairyAndFats } = data;
+            const { Iron, Protein, "Vitamin C": VitaminC, "Vitamin B12": VitaminB12, Fiber } = data;
 
             // Function to pick a random item from an array
             const getRandomItem = (arr) => {
@@ -17,18 +17,20 @@ generateBtn.addEventListener('click', () => {
             };
 
             // Pick one random ingredient from each group
-            const randomProtein = getRandomItem(proteins);
-            const randomCarb = getRandomItem(carbs);
-            const randomVeggie = getRandomItem(veggiesAndFruits);
-            const randomDairyFat = getRandomItem(dairyAndFats);
+            const randomIron = getRandomItem(Iron);
+            const randomProtein = getRandomItem(Protein);
+            const randomVitaminC = getRandomItem(VitaminC);
+            const randomVitaminB12 = getRandomItem(VitaminB12);
+            const randomFiber = getRandomItem(Fiber);
 
             // Display the result in the resultDiv
             resultDiv.innerHTML = `
                 <ul>
+                    <li><b>Iron:</b> ${randomIron}</li>
                     <li><b>Protein:</b> ${randomProtein}</li>
-                    <li><b>Carb:</b> ${randomCarb}</li>
-                    <li><b>Veg/Fruit:</b> ${randomVeggie}</li>
-                    <li><b>Dairy/Fat:</b> ${randomDairyFat}</li>
+                    <li><b>Vitamin C:</b> ${randomVitaminC}</li>
+                    <li><b>Vitamin B12:</b> ${randomVitaminB12}</li>
+                    <li><b>Fiber:</b> ${randomFiber}</li>
                 </ul>
             `;
         });
