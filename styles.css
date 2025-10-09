@@ -46,3 +46,18 @@ button {
 button:hover {
     background-color: #2980b9;
 }
+
+@keyframes fadeInHighlight {
+  from {
+    background-color: #fffbe0; /* A light yellow highlight */
+    opacity: 0;
+  }
+  to {
+    background-color: transparent;
+    opacity: 1;
+  }
+}
+
+.new-ingredient {
+  animation: fadeInHighlight 1s ease-out;
+}
