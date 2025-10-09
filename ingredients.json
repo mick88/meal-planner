@@ -1,127 +1,377 @@
-{
-  "Iron": [
-    "Red lentils",
-    "Red kidney beans in a can",
-    "Green lentils",
-    "Rye flour",
-    "Sunflower seeds",
-    "Sesame seeds",
-    "Chickpeas",
-    "Pumpkin",
-    "Bread",
-    "Barley groats",
-    "Eggs",
-    "Rocket leaves",
-    "Butter beans",
-    "Tomatoes",
-    "Potatoes",
-    "Sweet potatoes",
-    "Carrots",
-    "Mince meat",
-    "Chicken wings",
-    "Beef",
-    "Bread rolls",
-    "Green peas",
-    "Spinach"
-  ],
-  "Protein": [
-    "Red lentils",
-    "Red kidney beans in a can",
-    "Green lentils",
-    "High protein wraps",
-    "Sunflower seeds",
-    "Sesame seeds",
-    "Chickpeas",
-    "Barley",
-    "Bulgur wheat",
-    "Eggs",
-    "Greek style Natural Yoghurt",
-    "Cheese",
-    "Milk",
-    "Brie",
-    "Mince meat",
-    "Chicken wings",
-    "Beef",
-    "Edamame beans (green)",
-    "Green peas"
-  ],
-  "Vitamin C": [
-    "Chopped tomatoes",
-    "Tomato puree",
-    "Tomato passata",
-    "Bananas",
-    "Apples",
-    "Plums",
-    "Rocket leaves",
-    "Tomatoes",
-    "Zucchini",
-    "Sweet potatoes",
-    "Yellow pepper",
-    "Pears",
-    "Red peppers",
-    "Watermelon",
-    "Cucumber",
-    "Avocados",
-    "Carrots",
-    "Raspberries",
-    "Edamame beans (green)",
-    "Green peas",
-    "Button mushrooms",
-    "Spinach"
-  ],
-  "Vitamin B12": [
-    "Eggs",
-    "Greek style Natural Yoghurt",
-    "Cheese",
-    "Milk",
-    "Brie",
-    "Mince meat",
-    "Chicken wings",
-    "Beef"
-  ],
-  "Fiber": [
-    "Fusili",
-    "Spaghetti",
-    "Barley",
-    "Red lentils",
-    "Red kidney beans in a can",
-    "Green lentils",
-    "Chopped tomatoes",
-    "Tomato puree",
-    "Tomato passata",
-    "Rye flour",
-    "High protein wraps",
-    "Rice cakes, salted",
-    "Sunflower seeds",
-    "Sesame seeds",
-    "Chickpeas",
-    "Pumpkin",
-    "Butternut squash",
-    "Bread",
-    "Bulgur wheat",
-    "Barley groats",
-    "Bananas",
-    "Apples",
-    "Plums",
-    "Rocket leaves",
-    "Garlic",
-    "Butter beans",
-    "Tomatoes",
-    "Potatoes",
-    "Zucchini",
-    "Sweet potatoes",
-    "Yellow pepper",
-    "Pears",
-    "Red peppers",
-    "Watermelon",
-    "Cucumber",
-    "Avocados",
-    "Carrots",
-    "Diced onion",
-    "Raspberries",
-    "Edamame beans (green)",
-    "Green peas",
-    "Button mushrooms",
-    "Spinach"
-  ]
-}
+[
+  {
+    "name": "Red lentils",
+    "groups": [
+      "Iron",
+      "Protein",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Red kidney beans in a can",
+    "groups": [
+      "Iron",
+      "Protein",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Green lentils",
+    "groups": [
+      "Iron",
+      "Protein",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Rye flour",
+    "groups": [
+      "Iron",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Sunflower seeds",
+    "groups": [
+      "Iron",
+      "Protein",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Sesame seeds",
+    "groups": [
+      "Iron",
+      "Protein",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Chickpeas",
+    "groups": [
+      "Iron",
+      "Protein",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Pumpkin",
+    "groups": [
+      "Iron",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Bread",
+    "groups": [
+      "Iron",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Barley groats",
+    "groups": [
+      "Iron",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Eggs",
+    "groups": [
+      "Iron",
+      "Protein",
+      "Vitamin B12"
+    ]
+  },
+  {
+    "name": "Rocket leaves",
+    "groups": [
+      "Iron",
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Butter beans",
+    "groups": [
+      "Iron",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Tomatoes",
+    "groups": [
+      "Iron",
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Potatoes",
+    "groups": [
+      "Iron",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Sweet potatoes",
+    "groups": [
+      "Iron",
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Carrots",
+    "groups": [
+      "Iron",
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Mince meat",
+    "groups": [
+      "Iron",
+      "Protein",
+      "Vitamin B12"
+    ]
+  },
+  {
+    "name": "Chicken wings",
+    "groups": [
+      "Iron",
+      "Protein",
+      "Vitamin B12"
+    ]
+  },
+  {
+    "name": "Beef",
+    "groups": [
+      "Iron",
+      "Protein",
+      "Vitamin B12"
+    ]
+  },
+  {
+    "name": "Bread rolls",
+    "groups": [
+      "Iron"
+    ]
+  },
+  {
+    "name": "Green peas",
+    "groups": [
+      "Iron",
+      "Protein",
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Spinach",
+    "groups": [
+      "Iron",
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "High protein wraps",
+    "groups": [
+      "Protein",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Barley",
+    "groups": [
+      "Protein",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Bulgur wheat",
+    "groups": [
+      "Protein",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Greek style Natural Yoghurt",
+    "groups": [
+      "Protein",
+      "Vitamin B12"
+    ]
+  },
+  {
+    "name": "Cheese",
+    "groups": [
+      "Protein",
+      "Vitamin B12"
+    ]
+  },
+  {
+    "name": "Milk",
+    "groups": [
+      "Protein",
+      "Vitamin B12"
+    ]
+  },
+  {
+    "name": "Brie",
+    "groups": [
+      "Protein",
+      "Vitamin B12"
+    ]
+  },
+  {
+    "name": "Edamame beans (green)",
+    "groups": [
+      "Protein",
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Chopped tomatoes",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Tomato puree",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Tomato passata",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Bananas",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Apples",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Plums",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Zucchini",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Yellow pepper",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Pears",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Red peppers",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Watermelon",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Cucumber",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Avocados",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Raspberries",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Button mushrooms",
+    "groups": [
+      "Vitamin C",
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Fusili",
+    "groups": [
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Spaghetti",
+    "groups": [
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Rice cakes, salted",
+    "groups": [
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Butternut squash",
+    "groups": [
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Garlic",
+    "groups": [
+      "Fiber"
+    ]
+  },
+  {
+    "name": "Diced onion",
+    "groups": [
+      "Fiber"
+    ]
+  }
+]

@@ -1,37 +1,63 @@
-
-// Get references to the HTML elements
 const generateBtn = document.getElementById('generateBtn');
+const addBtn = document.getElementById('addBtn');
 const resultDiv = document.getElementById('result');
 
-// Add a click event listener to the button
+let allIngredients = [];
+let selectedIngredients = [];
+
+// Fetch ingredient data once when the script loads
+fetch('ingredients.json')
+    .then(response => response.json())
+    .then(data => {
+        allIngredients = data;
+        // Initially hide the add button
+        addBtn.style.display = 'none';
+    });
+
+// Function to render the list of selected ingredients
+const renderIngredients = () => {
+    if (selectedIngredients.length === 0) {
+        resultDiv.innerHTML = '<p>Click the button to get a meal idea!</p>';
+        addBtn.style.display = 'none';
+        return;
+    }
+
+    resultDiv.innerHTML = `
+        <h3>Selected Ingredients:</h3>
+        <ul>
+            ${selectedIngredients.map(ing => `<li><strong>${ing.name}</strong> (${ing.groups.join(', ')})</li>`).join('')}
+        </ul>
+    `;
+    addBtn.style.display = 'inline-block'; // Show the add button
+};
+
+// Function to add a specified number of unique random ingredients
+const addRandomIngredients = (count) => {
+    // Find ingredients that are not already selected
+    const availableIngredients = allIngredients.filter(ing => 
+        !selectedIngredients.some(selected => selected.name === ing.name)
+    );
+
+    // Shuffle the available ingredients
+    for (let i = availableIngredients.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [availableIngredients[i], availableIngredients[j]] = [availableIngredients[j], availableIngredients[i]];
+    }
+
+    // Add the new ingredients to the selection
+    const newIngredients = availableIngredients.slice(0, count);
+    selectedIngredients.push(...newIngredients);
+};
+
+// Event listener for the main generate button
 generateBtn.addEventListener('click', () => {
-    fetch('ingredients.json')
-        .then(response => response.json())
-        .then(data => {
-            const { Iron, Protein, "Vitamin C": VitaminC, "Vitamin B12": VitaminB12, Fiber } = data;
+    selectedIngredients = []; // Clear the list
+    addRandomIngredients(3);
+    renderIngredients();
+});
 
-            // Function to pick a random item from an array
-            const getRandomItem = (arr) => {
-                const randomIndex = Math.floor(Math.random() * arr.length);
-                return arr[randomIndex];
-            };
-
-            // Pick one random ingredient from each group
-            const randomIron = getRandomItem(Iron);
-            const randomProtein = getRandomItem(Protein);
-            const randomVitaminC = getRandomItem(VitaminC);
-            const randomVitaminB12 = getRandomItem(VitaminB12);
-            const randomFiber = getRandomItem(Fiber);
-
-            // Display the result in the resultDiv
-            resultDiv.innerHTML = `
-                <ul>
-                    <li><b>Iron:</b> ${randomIron}</li>
-                    <li><b>Protein:</b> ${randomProtein}</li>
-                    <li><b>Vitamin C:</b> ${randomVitaminC}</li>
-                    <li><b>Vitamin B12:</b> ${randomVitaminB12}</li>
-                    <li><b>Fiber:</b> ${randomFiber}</li>
-                </ul>
-            `;
-        });
+// Event listener for the add button
+addBtn.addEventListener('click', () => {
+    addRandomIngredients(1);
+    renderIngredients();
 });
