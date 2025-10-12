@@ -340,6 +340,7 @@ footer a:hover {
     -webkit-mask-image: url(github-logo.svg);
     mask-size: contain;
     -webkit-mask-size: contain;
+    margin-right: 0.5em;
 }
 
 /* --- Responsive Styles for Mobile --- */

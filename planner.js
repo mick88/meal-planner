@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             missingGroupsHtml = `<div class="missing-groups"><h4>Missing Groups:</h4><small>${missingGroups.join(', ')}</small></div>`;
         }
         ingredientListDiv.innerHTML = `<h3>Selected Ingredients:</h3><ul>${listHtml}</ul>${missingGroupsHtml}`;
-        addBtn.innerHTML = 'Add another ➕';
+        addBtn.innerHTML = '➕ Add another';
     };
 
     const renderSavedMeals = () => {
