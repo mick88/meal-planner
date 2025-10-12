@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Element references
     const generateBtn = document.getElementById('generateBtn');
     const addBtn = document.getElementById('addBtn');
+    const saveMealBtn = document.getElementById('saveMealBtn');
     const ingredientListDiv = document.getElementById('ingredient-list');
+    const savedMealsList = document.getElementById('saved-meals-list');
     const modal = document.getElementById('ingredientsModal');
     const viewAllBtn = document.getElementById('viewAllBtn');
     const closeBtn = document.querySelector('.close-btn');
@@ -16,20 +18,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let allIngredients = [];
     let selectedIngredients = [];
     let allAvailableGroups = new Set();
+    let savedMeals = [];
 
     // --- Data Management ---
 
-    const saveIngredients = () => {
-        localStorage.setItem('userIngredients', JSON.stringify(allIngredients));
-    };
+    const saveIngredients = () => localStorage.setItem('userIngredients', JSON.stringify(allIngredients));
+    const saveMeals = () => localStorage.setItem('savedMeals', JSON.stringify(savedMeals));
 
     const initializeApp = (data) => {
         allIngredients = data;
         allAvailableGroups.clear();
         allIngredients.forEach(ing => ing.groups.forEach(group => allAvailableGroups.add(group)));
-        if (modal.style.display === 'block') {
-            populateModal();
-        }
+        if (modal.style.display === 'block') populateModal();
     };
 
     const loadIngredients = () => {
@@ -37,18 +37,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (userIngredients) {
             initializeApp(JSON.parse(userIngredients));
         } else {
-            fetch('ingredients.json')
-                .then(response => response.json())
-                .then(data => initializeApp(data));
+            fetch('ingredients.json').then(response => response.json()).then(data => initializeApp(data));
+        }
+    };
+
+    const loadSavedMeals = () => {
+        const storedMeals = localStorage.getItem('savedMeals');
+        if (storedMeals) {
+            savedMeals = JSON.parse(storedMeals);
+            renderSavedMeals();
         }
     };
 
     // --- Rendering ---
 
     const renderIngredients = () => {
-        if (selectedIngredients.length === 0) {
+        const hasIngredients = selectedIngredients.length > 0;
+        saveMealBtn.style.display = hasIngredients ? 'block' : 'none';
+        addBtn.style.display = hasIngredients ? 'inline-block' : 'none';
+
+        if (!hasIngredients) {
             ingredientListDiv.innerHTML = '<p>Click the button to get a meal idea!</p>';
-            addBtn.style.display = 'none';
             return;
         }
 
@@ -56,27 +65,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const pinnedClass = ing.pinned ? 'pinned' : '';
             const newClass = ing.isNew ? 'new-ingredient' : '';
             ing.isNew = false;
-            return `
-                <li class="${newClass}">
-                    <div class="ingredient-info"><strong>${ing.name}</strong><small>${ing.groups.join(', ')}</small></div>
-                    <div class="button-container">
-                        <button class="pin-btn ${pinnedClass}" data-name="${ing.name}">📌</button>
-                        <button class="remove-btn" data-name="${ing.name}">🗑️</button>
-                    </div>
-                </li>
-            `;
+            return `<li class="${newClass}"><div class="ingredient-info"><strong>${ing.name}</strong><small>${ing.groups.join(', ')}</small></div><div class="button-container"><button class="pin-btn ${pinnedClass}" data-name="${ing.name}">📌</button><button class="remove-btn" data-name="${ing.name}">🗑️</button></div></li>`;
         }).join('');
-
         const coveredGroups = new Set(selectedIngredients.flatMap(ing => ing.groups));
         const missingGroups = [...allAvailableGroups].filter(group => !coveredGroups.has(group));
         let missingGroupsHtml = '';
         if (missingGroups.length > 0) {
             missingGroupsHtml = `<div class="missing-groups"><h4>Missing Groups:</h4><small>${missingGroups.join(', ')}</small></div>`;
         }
-
         ingredientListDiv.innerHTML = `<h3>Selected Ingredients:</h3><ul>${listHtml}</ul>${missingGroupsHtml}`;
         addBtn.innerHTML = 'Add another ➕';
-        addBtn.style.display = 'inline-block';
+    };
+
+    const renderSavedMeals = () => {
+        savedMealsList.innerHTML = savedMeals.map((meal, index) => `
+            <li>
+                <span class="meal-name" data-index="${index}">${meal.name}</span>
+                <button class="delete-meal-btn" data-index="${index}">🗑️</button>
+            </li>
+        `).join('');
     };
 
     // --- Core Logic ---
@@ -124,6 +131,23 @@ document.addEventListener('DOMContentLoaded', () => {
         renderIngredients();
     });
 
+    saveMealBtn.addEventListener('click', () => {
+        if (selectedIngredients.length === 0) return;
+        const mealName = prompt('Please enter a name for your meal:');
+        if (mealName && mealName.trim()) {
+            if (savedMeals.some(meal => meal.name.toLowerCase() === mealName.trim().toLowerCase())) {
+                alert('A meal with this name already exists.');
+                return;
+            }
+            const newMeal = { name: mealName.trim(), ingredients: selectedIngredients.map(({ name, groups }) => ({ name, groups })) };
+            savedMeals.push(newMeal);
+            saveMeals();
+            renderSavedMeals();
+        } else if (mealName !== null) {
+            alert('Meal name cannot be empty.');
+        }
+    });
+
     ingredientListDiv.addEventListener('click', (e) => {
         const button = e.target.closest('button');
         if (!button) return;
@@ -140,25 +164,30 @@ document.addEventListener('DOMContentLoaded', () => {
         renderIngredients();
     });
 
+    savedMealsList.addEventListener('click', (e) => {
+        const target = e.target;
+        const index = target.dataset.index;
+        if (index === undefined) return;
+
+        if (target.classList.contains('delete-meal-btn')) {
+            if (confirm(`Are you sure you want to delete the meal "${savedMeals[index].name}"?`)) {
+                savedMeals.splice(index, 1);
+                saveMeals();
+                renderSavedMeals();
+            }
+        } else if (target.classList.contains('meal-name')) {
+            const meal = savedMeals[index];
+            selectedIngredients = meal.ingredients.map(ing => ({ ...ing, pinned: false, isNew: true }));
+            renderIngredients();
+        }
+    });
+
     // --- Modal Logic ---
 
     const populateModal = () => {
-        // Populate ingredient list
-        const listHtml = allIngredients.map(ing => `
-            <li>
-                <span><strong>${ing.name}</strong> <small>(${ing.groups.join(', ')})</small></span>
-                <button class="remove-btn modal-remove" data-name="${ing.name}">🗑️</button>
-            </li>
-        `).join('');
+        const listHtml = allIngredients.map(ing => `<li><span><strong>${ing.name}</strong> <small>(${ing.groups.join(', ')})</small></span><button class="remove-btn modal-remove" data-name="${ing.name}">🗑️</button></li>`).join('');
         modalListDiv.innerHTML = `<ul>${listHtml}</ul>`;
-
-        // Populate checkboxes for adding new ingredients
-        const groupsHtml = [...allAvailableGroups].map(group => `
-            <label>
-                <input type="checkbox" name="group" value="${group}">
-                ${group}
-            </label>
-        `).join('');
+        const groupsHtml = [...allAvailableGroups].map(group => `<label><input type="checkbox" name="group" value="${group}">${group}</label>`).join('');
         newIngredientGroupsDiv.innerHTML = groupsHtml;
     };
 
@@ -185,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const ingredientName = button.dataset.name;
         allIngredients = allIngredients.filter(ing => ing.name !== ingredientName);
         saveIngredients();
-        populateModal(); // Refresh the modal list
+        populateModal();
     });
 
     addIngredientForm.addEventListener('submit', (e) => {
@@ -199,22 +228,21 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('This ingredient already exists.');
             return;
         }
-
         const selectedGroups = Array.from(newIngredientGroupsDiv.querySelectorAll('input[name="group"]:checked')).map(cb => cb.value);
         if (selectedGroups.length === 0) {
             alert('Please select at least one nutritional group.');
             return;
         }
-
         const newIngredient = { name: name, groups: selectedGroups };
         allIngredients.push(newIngredient);
-        allIngredients.sort((a, b) => a.name.localeCompare(b.name)); // Keep the list sorted
-        
+        allIngredients.sort((a, b) => a.name.localeCompare(b.name));
         saveIngredients();
-        populateModal(); // Refresh the view
-        addIngredientForm.reset(); // Clear the form
+        populateModal();
+        addIngredientForm.reset();
     });
 
     // Initial Load
     loadIngredients();
+    loadSavedMeals();
+    renderIngredients(); // Initial render to hide buttons
 });

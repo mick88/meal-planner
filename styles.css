@@ -157,6 +157,46 @@ button:hover {
   color: #777;
 }
 
+#saveMealBtn {
+  background-color: #ffc107; /* Amber color for save */
+  margin-top: 10px;
+}
+
+#saved-meals-container {
+  width: 80%;
+  max-width: 400px;
+  margin-top: 2rem;
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#saved-meals-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+#saved-meals-list li:hover {
+  background-color: #f0f4f8;
+}
+
+.delete-meal-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #aaa;
+  transition: color 0.2s;
+}
+
+.delete-meal-btn:hover {
+  color: #e74c3c;
+}
+
 /* Modal Styles */
 .modal {
   display: none; /* Hidden by default */
