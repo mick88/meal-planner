@@ -58,10 +58,6 @@ button:hover {
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-#addBtn, #saveMealBtn {
-    margin-top: 1rem;
-}
-
 .ingredient-actions {
     display: flex;
     gap: 1rem;
