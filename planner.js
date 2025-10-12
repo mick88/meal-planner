@@ -135,19 +135,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     saveMealBtn.addEventListener('click', () => {
         if (selectedIngredients.length === 0) return;
-        const mealName = prompt('Please enter a name for your meal:');
-        if (mealName && mealName.trim()) {
-            if (savedMeals.some(meal => meal.name.toLowerCase() === mealName.trim().toLowerCase())) {
-                alert('A meal with this name already exists.');
-                return;
-            }
-            const newMeal = { name: mealName.trim(), ingredients: selectedIngredients.map(({ name, groups }) => ({ name, groups })) };
-            savedMeals.push(newMeal);
-            saveMeals();
-            renderSavedMeals();
-        } else if (mealName !== null) {
-            alert('Meal name cannot be empty.');
+
+        // Auto-generate the meal name
+        const mealName = selectedIngredients
+            .map(ing => ing.name.replace(/\p{Emoji}/gu, '').trim()) // Remove emojis and trim whitespace
+            .sort((a, b) => a.localeCompare(b))
+            .join(', ');
+
+        if (savedMeals.some(meal => meal.name.toLowerCase() === mealName.toLowerCase())) {
+            alert(`A meal named "${mealName}" already exists.`);
+            return;
         }
+
+        const newMeal = { 
+            name: mealName, 
+            ingredients: selectedIngredients.map(({ name, groups }) => ({ name, groups })) 
+        };
+        savedMeals.push(newMeal);
+        saveMeals();
+        renderSavedMeals();
+        alert(`Meal saved as: "${mealName}"`);
     });
 
     ingredientListDiv.addEventListener('click', (e) => {
