@@ -1,3 +1,7 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: #f0f4f8;
@@ -288,6 +292,41 @@ button:hover {
 .delete-meal-btn:hover {
   color: #e74c3c;
   box-shadow: none;
+}
+
+/* --- Responsive Styles for Mobile --- */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem;
+    }
+
+    .main-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #meal-container {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    button {
+        padding: 0.9rem 1rem;
+    }
+
+    .ingredient-info strong {
+        font-size: 1.1rem;
+    }
+
+    .modal-content {
+        margin: 2.5vh auto;
+        width: 95%;
+        height: 90vh;
+    }
 }
 
 .add-to-meal-btn {
