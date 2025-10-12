@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const addIngredientForm = document.getElementById('add-ingredient-form');
     const newIngredientNameInput = document.getElementById('new-ingredient-name');
     const newIngredientGroupsDiv = document.getElementById('new-ingredient-groups');
+    const savedMealsModal = document.getElementById('savedMealsModal');
+    const viewSavedBtn = document.getElementById('viewSavedBtn');
 
     // State variables
     let allIngredients = [];
@@ -179,10 +181,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const meal = savedMeals[index];
             selectedIngredients = meal.ingredients.map(ing => ({ ...ing, pinned: false, isNew: true }));
             renderIngredients();
+            savedMealsModal.style.display = 'none'; // Close modal on selection
         }
     });
 
     // --- Modal Logic ---
+
+    // Ingredients Modal
+    const ingredientsModal = document.getElementById('ingredientsModal');
+    const ingredientsCloseBtn = ingredientsModal.querySelector('.close-btn');
 
     const populateModal = () => {
         const listHtml = allIngredients.map(ing => `<li><span><strong>${ing.name}</strong> <small>(${ing.groups.join(', ')})</small></span><button class="remove-btn modal-remove" data-name="${ing.name}">🗑️</button></li>`).join('');
@@ -193,12 +200,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     viewAllBtn.addEventListener('click', () => {
         populateModal();
-        modal.style.display = 'block';
+        ingredientsModal.style.display = 'block';
     });
 
-    closeBtn.addEventListener('click', () => modal.style.display = 'none');
+    ingredientsCloseBtn.addEventListener('click', () => ingredientsModal.style.display = 'none');
+
+    // Saved Meals Modal
+    const savedMealsCloseBtn = savedMealsModal.querySelector('.close-btn');
+
+    viewSavedBtn.addEventListener('click', () => {
+        savedMealsModal.style.display = 'block';
+    });
+
+    savedMealsCloseBtn.addEventListener('click', () => savedMealsModal.style.display = 'none');
+
+    // General modal close logic
     window.addEventListener('click', (e) => {
-        if (e.target == modal) modal.style.display = 'none';
+        if (e.target == ingredientsModal) ingredientsModal.style.display = 'none';
+        if (e.target == savedMealsModal) savedMealsModal.style.display = 'none';
     });
 
     resetIngredientsBtn.addEventListener('click', () => {
