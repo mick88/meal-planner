@@ -1,0 +1,20 @@
+{
+  "name": "Toddler Meal Planner",
+  "short_name": "Meal Planner",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#F5F5F5",
+  "theme_color": "#1976D2",
+  "description": "A simple app to help generate meal ideas for toddlers.",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "48x48 72x72 96x96 128x128 256x256"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
