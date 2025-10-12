@@ -324,6 +324,12 @@ footer a:hover {
     text-decoration: underline;
 }
 
+.disclaimer {
+    font-size: 0.75rem;
+    color: #9e9e9e; /* Lighter grey */
+    margin-top: 0.5rem;
+}
+
 .github-icon {
     display: inline-block;
     width: 1em;
