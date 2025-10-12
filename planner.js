@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const populateModalList = () => {
         const listHtml = allIngredients.map(ing => `
             <li>
-                <div class="ingredient-info"><strong>${ing.name}</strong><small>${ing.groups.join(', ')}</small></div>
+                <span><strong>${ing.name}</strong> <small>(${ing.groups.join(', ')})</small></span>
                 <button class="remove-btn modal-remove" data-name="${ing.name}">🗑️</button>
             </li>
         `).join('');

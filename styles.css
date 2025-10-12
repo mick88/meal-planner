@@ -180,6 +180,9 @@ button:hover {
 }
 
 #modal-ingredient-list li {
-  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px; /* Reduced padding */
   border-bottom: 1px solid #eee;
 }
