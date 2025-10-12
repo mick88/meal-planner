@@ -113,6 +113,43 @@ button:hover {
   transform: scale(1.1); /* Make the pinned icon pop */
 }
 
+#add-ingredient-form {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#add-ingredient-form input[type="text"] {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#new-ingredient-groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+#new-ingredient-groups label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#add-ingredient-form button {
+  background-color: #28a745; /* Green for save */
+}
+
 .missing-groups {
   margin-top: 1.5rem;
   padding-top: 1rem;

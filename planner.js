@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     // Element references
     const generateBtn = document.getElementById('generateBtn');
@@ -9,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.querySelector('.close-btn');
     const modalListDiv = document.getElementById('modal-ingredient-list');
     const resetIngredientsBtn = document.getElementById('resetIngredientsBtn');
+    const addIngredientForm = document.getElementById('add-ingredient-form');
+    const newIngredientNameInput = document.getElementById('new-ingredient-name');
+    const newIngredientGroupsDiv = document.getElementById('new-ingredient-groups');
 
     // State variables
     let allIngredients = [];
@@ -25,9 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         allIngredients = data;
         allAvailableGroups.clear();
         allIngredients.forEach(ing => ing.groups.forEach(group => allAvailableGroups.add(group)));
-        // If the modal is open, refresh its content
         if (modal.style.display === 'block') {
-            populateModalList();
+            populateModal();
         }
     };
 
@@ -141,7 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Modal Logic ---
 
-    const populateModalList = () => {
+    const populateModal = () => {
+        // Populate ingredient list
         const listHtml = allIngredients.map(ing => `
             <li>
                 <span><strong>${ing.name}</strong> <small>(${ing.groups.join(', ')})</small></span>
@@ -149,10 +151,19 @@ document.addEventListener('DOMContentLoaded', () => {
             </li>
         `).join('');
         modalListDiv.innerHTML = `<ul>${listHtml}</ul>`;
+
+        // Populate checkboxes for adding new ingredients
+        const groupsHtml = [...allAvailableGroups].map(group => `
+            <label>
+                <input type="checkbox" name="group" value="${group}">
+                ${group}
+            </label>
+        `).join('');
+        newIngredientGroupsDiv.innerHTML = groupsHtml;
     };
 
     viewAllBtn.addEventListener('click', () => {
-        populateModalList();
+        populateModal();
         modal.style.display = 'block';
     });
 
@@ -174,7 +185,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const ingredientName = button.dataset.name;
         allIngredients = allIngredients.filter(ing => ing.name !== ingredientName);
         saveIngredients();
-        populateModalList(); // Refresh the modal list
+        populateModal(); // Refresh the modal list
+    });
+
+    addIngredientForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = newIngredientNameInput.value.trim();
+        if (!name) {
+            alert('Ingredient name cannot be empty.');
+            return;
+        }
+        if (allIngredients.some(ing => ing.name.toLowerCase() === name.toLowerCase())) {
+            alert('This ingredient already exists.');
+            return;
+        }
+
+        const selectedGroups = Array.from(newIngredientGroupsDiv.querySelectorAll('input[name="group"]:checked')).map(cb => cb.value);
+        if (selectedGroups.length === 0) {
+            alert('Please select at least one nutritional group.');
+            return;
+        }
+
+        const newIngredient = { name: name, groups: selectedGroups };
+        allIngredients.push(newIngredient);
+        allIngredients.sort((a, b) => a.name.localeCompare(b.name)); // Keep the list sorted
+        
+        saveIngredients();
+        populateModal(); // Refresh the view
+        addIngredientForm.reset(); // Clear the form
     });
 
     // Initial Load
