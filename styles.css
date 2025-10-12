@@ -163,6 +163,11 @@ button:hover {
   cursor: pointer;
 }
 
+#resetIngredientsBtn {
+  background-color: #e74c3c;
+  margin-bottom: 1rem;
+}
+
 #modal-ingredient-list {
   flex-grow: 1; /* Allow the list to grow and fill space */
   overflow-y: auto; /* Enable vertical scrolling */
