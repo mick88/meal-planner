@@ -69,7 +69,32 @@ document.addEventListener('DOMContentLoaded', () => {
             const pinnedClass = ing.pinned ? 'pinned' : '';
             const newClass = ing.isNew ? 'new-ingredient' : '';
             ing.isNew = false;
-            return `<li class="${newClass}"><div class="ingredient-info"><strong>${ing.name}</strong><small>${ing.groups.join(', ')}</small></div><div class="button-container"><button class="pin-btn ${pinnedClass}" data-name="${ing.name}">📌</button><button class="remove-btn" data-name="${ing.name}">🗑️</button></div></li>`;
+
+            // Find suggestions for the tooltip
+            const suggestions = allIngredients
+                .filter(suggestion => 
+                    ing.name !== suggestion.name && 
+                    suggestion.groups.some(group => ing.groups.includes(group))
+                )
+                .map(suggestion => suggestion.name.replace(/\p{Emoji}/gu, '').trim());
+            
+            let tooltipText = '';
+            if (suggestions.length > 0) {
+                // Shuffle and take top 5
+                for (let i = suggestions.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [suggestions[i], suggestions[j]] = [suggestions[j], suggestions[i]];
+                }
+                tooltipText = `Similar: ${suggestions.slice(0, 5).join(', ')}`;
+            }
+
+            return `<li class="${newClass}" title="${tooltipText}">
+                <div class="ingredient-info"><strong>${ing.name}</strong><small>${ing.groups.join(', ')}</small></div>
+                <div class="button-container">
+                    <button class="pin-btn ${pinnedClass}" data-name="${ing.name}">📌</button>
+                    <button class="remove-btn" data-name="${ing.name}">🗑️</button>
+                </div>
+            </li>`;
         }).join('');
         const coveredGroups = new Set(selectedIngredients.flatMap(ing => ing.groups));
         const missingGroups = [...allAvailableGroups].filter(group => !coveredGroups.has(group));
