@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedMealsList = document.getElementById('saved-meals-list');
     const modal = document.getElementById('ingredientsModal');
     const viewAllBtn = document.getElementById('viewAllBtn');
-    const closeBtn = document.querySelector('.close-btn');
     const modalListDiv = document.getElementById('modal-ingredient-list');
     const resetIngredientsBtn = document.getElementById('resetIngredientsBtn');
     const addIngredientForm = document.getElementById('add-ingredient-form');
