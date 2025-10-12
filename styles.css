@@ -1,51 +1,70 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
     background-color: #f0f4f8;
     color: #333;
     text-align: center;
+    padding: 2rem;
 }
+
+.main-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
 #meal-container {
     background-color: #ffffff;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    min-height: 150px;
-    width: 80%;
-    max-width: 400px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
 }
+
 h1 {
     color: #2c3e50;
+    margin-top: 0;
 }
+
 ul {
     list-style: none;
     padding: 0;
 }
-li {
+
+#ingredient-list ul li {
     background-color: #eaf1f8;
     margin: 0.5rem 0;
-    padding: 0.75rem;
     border-radius: 5px;
     font-size: 1.1rem;
 }
+
+/* Unified Button Styles */
 button {
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
     background-color: #3498db;
     color: white;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
 button:hover {
-    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
+
+#addBtn, #saveMealBtn {
+    margin-top: 1rem;
+}
+
+#saveMealBtn { background-color: #f39c12; }
+#resetIngredientsBtn { background-color: #e74c3c; margin-bottom: 1rem; }
+#add-ingredient-form button { background-color: #28a745; }
 
 @keyframes fadeInHighlight {
   from {
@@ -53,7 +72,7 @@ button:hover {
     opacity: 0;
   }
   to {
-    background-color: transparent;
+    background-color: #eaf1f8;
     opacity: 1;
   }
 }
@@ -62,7 +81,7 @@ button:hover {
   animation: fadeInHighlight 1s ease-out;
 }
 
-/* New styles for ingredient list item */
+/* Ingredient List Item Layout */
 #ingredient-list ul li {
   display: flex;
   justify-content: space-between;
@@ -73,6 +92,7 @@ button:hover {
 .ingredient-info {
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 
 .ingredient-info strong {
@@ -94,14 +114,17 @@ button:hover {
   cursor: pointer;
   font-size: 1.5rem;
   transition: all 0.2s;
+  box-shadow: none;
+  padding: 0.5rem;
+}
+
+.pin-btn:hover, .remove-btn:hover {
+    transform: scale(1.1);
+    box-shadow: none;
 }
 
 .pin-btn {
   opacity: 0.3;
-}
-
-.pin-btn:hover, .remove-btn:hover {
-  opacity: 1;
 }
 
 .remove-btn:hover {
@@ -111,6 +134,62 @@ button:hover {
 .pin-btn.pinned {
   opacity: 1;
   transform: scale(1.1); /* Make the pinned icon pop */
+}
+
+.missing-groups {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  color: #777;
+  text-align: left;
+}
+
+.missing-groups h4 {
+    margin: 0 0 0.5rem 0;
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; 
+  z-index: 100; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 2vh auto; /* Small vertical margin */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 700px;
+  border-radius: 10px;
+  position: relative;
+  height: 90vh; /* Make modal content almost full height */
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.close-btn {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #add-ingredient-form {
@@ -146,20 +225,23 @@ button:hover {
   gap: 5px;
 }
 
-#add-ingredient-form button {
-  background-color: #28a745; /* Green for save */
+#modal-ingredient-list {
+  flex-grow: 1; /* Allow the list to grow and fill space */
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin-top: 1rem;
 }
 
-.missing-groups {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid #e0e0e0;
-  color: #777;
+#modal-ingredient-list ul {
+  list-style: none;
+  padding: 0;
 }
 
-#saveMealBtn {
-  background-color: #ffc107; /* Amber color for save */
-  margin-top: 10px;
+#modal-ingredient-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px; /* Reduced padding */
+  border-bottom: 1px solid #eee;
 }
 
 #saved-meals-container {
@@ -191,10 +273,12 @@ button:hover {
   font-size: 1.2rem;
   color: #aaa;
   transition: color 0.2s;
+  box-shadow: none;
 }
 
 .delete-meal-btn:hover {
   color: #e74c3c;
+  box-shadow: none;
 }
 
 /* Modal Styles */

@@ -8,6 +8,12 @@
 </head>
 <body>
 
+    <div class="main-controls">
+        <button id="generateBtn">Generate ✨</button>
+        <button id="viewAllBtn">View All Ingredients 📋</button>
+        <button id="viewSavedBtn">My Meals 📂</button>
+    </div>
+
     <div id="meal-container">
         <h1>Meal Idea Generator 🥕</h1>
         <div id="ingredient-list"></div>
@@ -15,9 +21,7 @@
         <button id="saveMealBtn">Save as Meal 💾</button>
     </div>
 
-    <button id="generateBtn">Generate ✨</button>
-    <button id="viewAllBtn">View All Ingredients</button>
-    <button id="viewSavedBtn">My Meals</button>
+
 
     <script src="planner.js"></script>
 
@@ -29,10 +33,10 @@
         <form id="add-ingredient-form">
           <input type="text" id="new-ingredient-name" placeholder="Ingredient Name" required>
           <div id="new-ingredient-groups"></div>
-          <button type="submit">Add Ingredient</button>
+          <button type="submit">Add Ingredient ✔️</button>
         </form>
         <hr>
-        <button id="resetIngredientsBtn">Reset to Default</button>
+        <button id="resetIngredientsBtn">Reset to Default 🔄</button>
         <div id="modal-ingredient-list"></div>
       </div>
     </div>
