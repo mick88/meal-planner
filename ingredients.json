@@ -24,10 +24,6 @@
     "groups": ["Iron", "Fiber"]
   },
   {
-    "name": "🧀 Brie",
-    "groups": ["Protein", "Vitamin B12"]
-  },
-  {
     "name": "📦 Bulgur wheat",
     "groups": ["Protein", "Fiber"]
   },
@@ -140,7 +136,7 @@
     "groups": ["Vitamin C", "Fiber"]
   },
   {
-    "name": "🍘 Rice cakes, salted",
+    "name": "🍘 Rice cakes",
     "groups": ["Fiber"]
   },
   {
