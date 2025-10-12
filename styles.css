@@ -62,6 +62,19 @@ button:hover {
     margin-top: 1rem;
 }
 
+.ingredient-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.ingredient-actions button {
+    margin-top: 0; /* Override default button margin */
+}
+
+#searchRecipesBtn { background-color: #2ecc71; } /* Emerald Green */
+
 #saveMealBtn { background-color: #f39c12; }
 #resetIngredientsBtn { background-color: #e74c3c; margin-bottom: 1rem; }
 #add-ingredient-form button { background-color: #28a745; }

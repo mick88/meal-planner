@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newIngredientGroupsDiv = document.getElementById('new-ingredient-groups');
     const savedMealsModal = document.getElementById('savedMealsModal');
     const viewSavedBtn = document.getElementById('viewSavedBtn');
+    const searchRecipesBtn = document.getElementById('searchRecipesBtn');
 
     // State variables
     let allIngredients = [];
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const hasIngredients = selectedIngredients.length > 0;
         saveMealBtn.style.display = hasIngredients ? 'block' : 'none';
         addBtn.style.display = hasIngredients ? 'inline-block' : 'none';
+        searchRecipesBtn.style.display = hasIngredients ? 'block' : 'none';
 
         if (!hasIngredients) {
             ingredientListDiv.innerHTML = '<p>Click the button to get a meal idea!</p>';
@@ -131,6 +133,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (!ingredientAdded) addRandomIngredients(1);
         renderIngredients();
+    });
+
+    searchRecipesBtn.addEventListener('click', () => {
+        if (selectedIngredients.length === 0) return;
+
+        const ingredientNames = selectedIngredients.map(ing => ing.name.replace(/\p{Emoji}/gu, '').trim());
+        const query = "toddler meal recipe with " + ingredientNames.join(' ');
+        const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+        
+        window.open(url, '_blank');
     });
 
     saveMealBtn.addEventListener('click', () => {
