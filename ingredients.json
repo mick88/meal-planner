@@ -1,377 +1,182 @@
 [
   {
-    "name": "Red lentils",
-    "groups": [
-      "Iron",
-      "Protein",
-      "Fiber"
-    ]
+    "name": "🍎 Apples",
+    "groups": ["Vitamin C", "Fiber"]
   },
   {
-    "name": "Red kidney beans in a can",
-    "groups": [
-      "Iron",
-      "Protein",
-      "Fiber"
-    ]
+    "name": "🥑 Avocados",
+    "groups": ["Vitamin C", "Fiber"]
   },
   {
-    "name": "Green lentils",
-    "groups": [
-      "Iron",
-      "Protein",
-      "Fiber"
-    ]
+    "name": "🍌 Bananas",
+    "groups": ["Vitamin C", "Fiber"]
   },
   {
-    "name": "Rye flour",
-    "groups": [
-      "Iron",
-      "Fiber"
-    ]
+    "name": "Barley / Barley Groats",
+    "groups": ["Iron", "Protein", "Fiber"]
   },
   {
-    "name": "Sunflower seeds",
-    "groups": [
-      "Iron",
-      "Protein",
-      "Fiber"
-    ]
+    "name": "🥩 Beef",
+    "groups": ["Iron", "Protein", "Vitamin B12"]
   },
   {
-    "name": "Sesame seeds",
-    "groups": [
-      "Iron",
-      "Protein",
-      "Fiber"
-    ]
+    "name": "🍞 Bread / Bread Rolls",
+    "groups": ["Iron", "Fiber"]
   },
   {
-    "name": "Chickpeas",
-    "groups": [
-      "Iron",
-      "Protein",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Pumpkin",
-    "groups": [
-      "Iron",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Bread",
-    "groups": [
-      "Iron",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Barley groats",
-    "groups": [
-      "Iron",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Eggs",
-    "groups": [
-      "Iron",
-      "Protein",
-      "Vitamin B12"
-    ]
-  },
-  {
-    "name": "Rocket leaves",
-    "groups": [
-      "Iron",
-      "Vitamin C",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Butter beans",
-    "groups": [
-      "Iron",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Tomatoes",
-    "groups": [
-      "Iron",
-      "Vitamin C",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Potatoes",
-    "groups": [
-      "Iron",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Sweet potatoes",
-    "groups": [
-      "Iron",
-      "Vitamin C",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Carrots",
-    "groups": [
-      "Iron",
-      "Vitamin C",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Mince meat",
-    "groups": [
-      "Iron",
-      "Protein",
-      "Vitamin B12"
-    ]
-  },
-  {
-    "name": "Chicken wings",
-    "groups": [
-      "Iron",
-      "Protein",
-      "Vitamin B12"
-    ]
-  },
-  {
-    "name": "Beef",
-    "groups": [
-      "Iron",
-      "Protein",
-      "Vitamin B12"
-    ]
-  },
-  {
-    "name": "Bread rolls",
-    "groups": [
-      "Iron"
-    ]
-  },
-  {
-    "name": "Green peas",
-    "groups": [
-      "Iron",
-      "Protein",
-      "Vitamin C",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Spinach",
-    "groups": [
-      "Iron",
-      "Vitamin C",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "High protein wraps",
-    "groups": [
-      "Protein",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Barley",
-    "groups": [
-      "Protein",
-      "Fiber"
-    ]
+    "name": "🧀 Brie",
+    "groups": ["Protein", "Vitamin B12"]
   },
   {
     "name": "Bulgur wheat",
-    "groups": [
-      "Protein",
-      "Fiber"
-    ]
+    "groups": ["Protein", "Fiber"]
   },
   {
-    "name": "Greek style Natural Yoghurt",
-    "groups": [
-      "Protein",
-      "Vitamin B12"
-    ]
+    "name": "🍄 Button mushrooms",
+    "groups": ["Vitamin C", "Fiber"]
   },
   {
-    "name": "Cheese",
-    "groups": [
-      "Protein",
-      "Vitamin B12"
-    ]
+    "name": "🫘 Butter beans",
+    "groups": ["Iron", "Fiber", "Protein"]
   },
   {
-    "name": "Milk",
-    "groups": [
-      "Protein",
-      "Vitamin B12"
-    ]
+    "name": "🎃 Butternut squash",
+    "groups": ["Fiber"]
   },
   {
-    "name": "Brie",
-    "groups": [
-      "Protein",
-      "Vitamin B12"
-    ]
+    "name": "🥕 Carrots",
+    "groups": ["Iron", "Vitamin C", "Fiber"]
+  },
+  {
+    "name": "🧀 Cheese",
+    "groups": ["Protein", "Vitamin B12"]
+  },
+  {
+    "name": "🍗 Chicken wings",
+    "groups": ["Iron", "Protein", "Vitamin B12"]
+  },
+  {
+    "name": "Chickpeas",
+    "groups": ["Iron", "Protein", "Fiber"]
+  },
+  {
+    "name": "🥒 Cucumber",
+    "groups": ["Vitamin C", "Fiber"]
+  },
+  {
+    "name": "🧅 Diced onion",
+    "groups": ["Fiber"]
   },
   {
     "name": "Edamame beans (green)",
-    "groups": [
-      "Protein",
-      "Vitamin C",
-      "Fiber"
-    ]
+    "groups": ["Protein", "Vitamin C", "Fiber"]
   },
   {
-    "name": "Chopped tomatoes",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
+    "name": "🥚 Eggs",
+    "groups": ["Iron", "Protein", "Vitamin B12"]
   },
   {
-    "name": "Tomato puree",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
+    "name": "🧄 Garlic",
+    "groups": ["Fiber"]
   },
   {
-    "name": "Tomato passata",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
+    "name": "Greek style Natural Yoghurt",
+    "groups": ["Protein", "Vitamin B12"]
   },
   {
-    "name": "Bananas",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
+    "name": "Green lentils",
+    "groups": ["Iron", "Protein", "Fiber"]
   },
   {
-    "name": "Apples",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
+    "name": "🫛 Green peas",
+    "groups": ["Iron", "Protein", "Vitamin C", "Fiber"]
+  },
+  {
+    "name": "🌮 High protein wraps",
+    "groups": ["Protein", "Fiber"]
+  },
+  {
+    "name": "Mince meat",
+    "groups": ["Iron", "Protein", "Vitamin B12"]
+  },
+  {
+    "name": "🥛 Milk",
+    "groups": ["Protein", "Vitamin B12"]
+  },
+  {
+    "name": "🍝 Pasta (Fusili/Spaghetti)",
+    "groups": ["Fiber"]
+  },
+  {
+    "name": "🍐 Pears",
+    "groups": ["Vitamin C", "Fiber"]
   },
   {
     "name": "Plums",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
+    "groups": ["Vitamin C", "Fiber"]
   },
   {
-    "name": "Zucchini",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
+    "name": "🥔 Potatoes",
+    "groups": ["Iron", "Fiber", "Vitamin C"]
   },
   {
-    "name": "Yellow pepper",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Pears",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Red peppers",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Watermelon",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Cucumber",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
-  },
-  {
-    "name": "Avocados",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
+    "name": "Pumpkin",
+    "groups": ["Iron", "Fiber"]
   },
   {
     "name": "Raspberries",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
+    "groups": ["Vitamin C", "Fiber"]
   },
   {
-    "name": "Button mushrooms",
-    "groups": [
-      "Vitamin C",
-      "Fiber"
-    ]
+    "name": "Red kidney beans in a can",
+    "groups": ["Iron", "Protein", "Fiber"]
   },
   {
-    "name": "Fusili",
-    "groups": [
-      "Fiber"
-    ]
+    "name": "Red lentils",
+    "groups": ["Iron", "Protein", "Fiber"]
   },
   {
-    "name": "Spaghetti",
-    "groups": [
-      "Fiber"
-    ]
+    "name": "🌶️ Peppers",
+    "groups": ["Vitamin C", "Fiber"]
   },
   {
     "name": "Rice cakes, salted",
-    "groups": [
-      "Fiber"
-    ]
+    "groups": ["Fiber"]
   },
   {
-    "name": "Butternut squash",
-    "groups": [
-      "Fiber"
-    ]
+    "name": "Rocket leaves",
+    "groups": ["Iron", "Vitamin C", "Fiber"]
   },
   {
-    "name": "Garlic",
-    "groups": [
-      "Fiber"
-    ]
+    "name": "Rye flour",
+    "groups": ["Iron", "Fiber"]
   },
   {
-    "name": "Diced onion",
-    "groups": [
-      "Fiber"
-    ]
+    "name": "Sesame seeds",
+    "groups": ["Iron", "Protein", "Fiber"]
+  },
+  {
+    "name": "🥬 Spinach",
+    "groups": ["Iron", "Vitamin C", "Fiber"]
+  },
+  {
+    "name": "🌻 Sunflower seeds",
+    "groups": ["Iron", "Protein", "Fiber"]
+  },
+  {
+    "name": "🍠 Sweet potatoes",
+    "groups": ["Iron", "Vitamin C", "Fiber"]
+  },
+  {
+    "name": "🍅 Tomatoes / Tomato Products",
+    "groups": ["Iron", "Vitamin C", "Fiber"]
+  },
+  {
+    "name": "🍉 Watermelon",
+    "groups": ["Vitamin C", "Fiber"]
+  },
+  {
+    "name": "🥒 Zucchini",
+    "groups": ["Vitamin C", "Fiber"]
   }
 ]
