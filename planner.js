@@ -163,8 +163,11 @@ document.addEventListener('DOMContentLoaded', () => {
     searchRecipesBtn.addEventListener('click', () => {
         if (selectedIngredients.length === 0) return;
 
-        const ingredientNames = selectedIngredients.map(ing => ing.name.replace(/\p{Emoji}/gu, '').trim());
-        const query = "toddler meal recipe with " + ingredientNames.join(' ');
+        const ingredientTerms = selectedIngredients
+            .map(ing => `"${ing.name.replace(/\p{Emoji}/gu, '').trim()}"`);
+        
+        const query = `toddler meal recipe ${ingredientTerms.join(' ')}`;
+        
         const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
         
         window.open(url, '_blank');
