@@ -239,8 +239,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const ingredientsCloseBtn = ingredientsModal.querySelector('.close-btn');
 
     const populateModal = () => {
-        const listHtml = allIngredients.map(ing => `<li><span><strong>${ing.name}</strong> <small>(${ing.groups.join(', ')})</small></span><button class="remove-btn modal-remove" data-name="${ing.name}">🗑️</button></li>`).join('');
+        const selectedNames = new Set(selectedIngredients.map(ing => ing.name));
+        const listHtml = allIngredients.map(ing => {
+            const isAdded = selectedNames.has(ing.name);
+            return `
+                <li>
+                    <span><strong>${ing.name}</strong> <small>(${ing.groups.join(', ')})</small></span>
+                    <div class="button-container">
+                        <button class="add-to-meal-btn" data-name="${ing.name}" ${isAdded ? 'disabled' : ''}>${isAdded ? '✔️' : '➕'}</button>
+                        <button class="remove-btn modal-remove" data-name="${ing.name}">🗑️</button>
+                    </div>
+                </li>
+            `;
+        }).join('');
         modalListDiv.innerHTML = `<ul>${listHtml}</ul>`;
+
         const groupsHtml = [...allAvailableGroups].map(group => `<label><input type="checkbox" name="group" value="${group}">${group}</label>`).join('');
         newIngredientGroupsDiv.innerHTML = groupsHtml;
     };
@@ -275,12 +288,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     modalListDiv.addEventListener('click', (e) => {
-        const button = e.target.closest('.modal-remove');
+        const button = e.target.closest('button');
         if (!button) return;
         const ingredientName = button.dataset.name;
-        allIngredients = allIngredients.filter(ing => ing.name !== ingredientName);
-        saveIngredients();
-        populateModal();
+
+        if (button.classList.contains('modal-remove')) {
+            allIngredients = allIngredients.filter(ing => ing.name !== ingredientName);
+            saveIngredients();
+            populateModal(); // Refresh the modal list
+        } else if (button.classList.contains('add-to-meal-btn')) {
+            const ingredientToAdd = allIngredients.find(ing => ing.name === ingredientName);
+            if (ingredientToAdd) {
+                selectedIngredients.push({ ...ingredientToAdd, pinned: false, isNew: true });
+                renderIngredients();
+                populateModal(); // Refresh buttons to show it's added
+            }
+        }
     });
 
     addIngredientForm.addEventListener('submit', (e) => {

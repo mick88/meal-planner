@@ -290,6 +290,28 @@ button:hover {
   box-shadow: none;
 }
 
+.add-to-meal-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #28a745; /* Green */
+    transition: all 0.2s;
+    padding: 0.5rem;
+    box-shadow: none;
+}
+
+.add-to-meal-btn:hover {
+    transform: scale(1.2);
+    box-shadow: none;
+}
+
+.add-to-meal-btn:disabled {
+    color: #bdc3c7; /* Gray */
+    cursor: default;
+    transform: none;
+}
+
 
 
 /* Modal Styles */
