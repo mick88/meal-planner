@@ -12,7 +12,7 @@
     "groups": ["Vitamin C", "Fiber"]
   },
   {
-    "name": "Barley / Barley Groats",
+    "name": "📦 Barley / Barley Groats",
     "groups": ["Iron", "Protein", "Fiber"]
   },
   {
@@ -28,7 +28,7 @@
     "groups": ["Protein", "Vitamin B12"]
   },
   {
-    "name": "Bulgur wheat",
+    "name": "📦 Bulgur wheat",
     "groups": ["Protein", "Fiber"]
   },
   {
@@ -37,7 +37,7 @@
   },
   {
     "name": "🫘 Butter beans",
-    "groups": ["Iron", "Fiber", "Protein"]
+    "groups": ["Iron", "Fiber"]
   },
   {
     "name": "🎃 Butternut squash",
@@ -56,7 +56,7 @@
     "groups": ["Iron", "Protein", "Vitamin B12"]
   },
   {
-    "name": "Chickpeas",
+    "name": "🫘 Chickpeas",
     "groups": ["Iron", "Protein", "Fiber"]
   },
   {
@@ -68,7 +68,7 @@
     "groups": ["Fiber"]
   },
   {
-    "name": "Edamame beans (green)",
+    "name": "🫛 Edamame beans (green)",
     "groups": ["Protein", "Vitamin C", "Fiber"]
   },
   {
@@ -80,11 +80,11 @@
     "groups": ["Fiber"]
   },
   {
-    "name": "Greek style Natural Yoghurt",
+    "name": "🥣 Greek style Natural Yoghurt",
     "groups": ["Protein", "Vitamin B12"]
   },
   {
-    "name": "Green lentils",
+    "name": "🫘 Green lentils",
     "groups": ["Iron", "Protein", "Fiber"]
   },
   {
@@ -96,7 +96,7 @@
     "groups": ["Protein", "Fiber"]
   },
   {
-    "name": "Mince meat",
+    "name": "🥩 Mince meat",
     "groups": ["Iron", "Protein", "Vitamin B12"]
   },
   {
@@ -112,7 +112,7 @@
     "groups": ["Vitamin C", "Fiber"]
   },
   {
-    "name": "Plums",
+    "name": "🍑 Plums",
     "groups": ["Vitamin C", "Fiber"]
   },
   {
@@ -120,19 +120,19 @@
     "groups": ["Iron", "Fiber", "Vitamin C"]
   },
   {
-    "name": "Pumpkin",
+    "name": "🎃 Pumpkin",
     "groups": ["Iron", "Fiber"]
   },
   {
-    "name": "Raspberries",
+    "name": "🍓 Raspberries",
     "groups": ["Vitamin C", "Fiber"]
   },
   {
-    "name": "Red kidney beans in a can",
+    "name": "🫘 Red kidney beans in a can",
     "groups": ["Iron", "Protein", "Fiber"]
   },
   {
-    "name": "Red lentils",
+    "name": "🫘 Red lentils",
     "groups": ["Iron", "Protein", "Fiber"]
   },
   {
@@ -140,19 +140,19 @@
     "groups": ["Vitamin C", "Fiber"]
   },
   {
-    "name": "Rice cakes, salted",
+    "name": "🍘 Rice cakes, salted",
     "groups": ["Fiber"]
   },
   {
-    "name": "Rocket leaves",
+    "name": "🥬 Rocket leaves",
     "groups": ["Iron", "Vitamin C", "Fiber"]
   },
   {
-    "name": "Rye flour",
+    "name": "🌾 Rye flour",
     "groups": ["Iron", "Fiber"]
   },
   {
-    "name": "Sesame seeds",
+    "name": "🧂 Sesame seeds",
     "groups": ["Iron", "Protein", "Fiber"]
   },
   {
