@@ -178,5 +178,65 @@
   {
     "name": "🥒 Zucchini",
     "groups": ["Vitamin C", "Fiber"]
+  },
+  {
+    "name": "🥣 Oats / Oatmeal",
+    "groups": ["Iron", "Protein", "Fiber"]
+  },
+  {
+    "name": "🍓 Strawberries",
+    "groups": ["Vitamin C", "Fiber"]
+  },
+  {
+    "name": "🐟 Salmon",
+    "groups": ["Protein", "Vitamin B12"]
+  },
+  {
+    "name": "🥦 Broccoli",
+    "groups": ["Iron", "Vitamin C", "Fiber"]
+  },
+  {
+    "name": "🫐 Blueberries",
+    "groups": ["Vitamin C", "Fiber"]
+  },
+  {
+    "name": "🌾 Quinoa",
+    "groups": ["Iron", "Protein", "Fiber"]
+  },
+  {
+    "name": "🧀 Cottage Cheese",
+    "groups": ["Protein", "Vitamin B12"]
+  },
+  {
+    "name": "🥭 Mango",
+    "groups": ["Vitamin C", "Fiber"]
+  },
+  {
+    "name": "⬜ Tofu",
+    "groups": ["Iron", "Protein"]
+  },
+  {
+    "name": "🥬 Kale",
+    "groups": ["Iron", "Vitamin C", "Fiber"]
+  },
+  {
+    "name": "🐑 Lamb",
+    "groups": ["Iron", "Protein", "Vitamin B12"]
+  },
+  {
+    "name": "🥝 Kiwi",
+    "groups": ["Vitamin C", "Fiber"]
+  },
+  {
+    "name": "🌽 Sweetcorn",
+    "groups": ["Fiber"]
+  },
+  {
+    "name": "🍊 Oranges / Clementines",
+    "groups": ["Vitamin C", "Fiber"]
+  },
+  {
+    "name": "🐠 Cod",
+    "groups": ["Protein", "Vitamin B12"]
   }
 ]
