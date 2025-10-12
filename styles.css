@@ -307,6 +307,35 @@ summary:hover {
   box-shadow: none;
 }
 
+/* --- Footer Styles --- */
+footer {
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+footer a {
+    color: #b0bec5; /* Lighter grey */
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: var(--md-primary-color);
+    text-decoration: underline;
+}
+
+.github-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    background-color: currentColor;
+    mask-image: url(github-logo.svg);
+    -webkit-mask-image: url(github-logo.svg);
+    mask-size: contain;
+    -webkit-mask-size: contain;
+}
+
 /* --- Responsive Styles for Mobile --- */
 @media (max-width: 600px) {
     body {

@@ -58,16 +58,12 @@
         </div>
     </div>
 
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then(registration => {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                }, err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-            });
-        }
-    </script>
+    <footer>
+      <a href="https://github.com/mick88/meal-planner" target="_blank" rel="noopener noreferrer">
+        <span class="github-icon"></span>
+        View on GitHub
+      </a>
+    </footer>
+
 </body>
 </html>
